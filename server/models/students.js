@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const StudentsSchema = new Schema(
   {
-    id: Id,
+    // id: Id,
     firstName: String,
     lastName: String,
     course: Number,
