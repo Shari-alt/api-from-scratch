@@ -1,8 +1,10 @@
 const express = require("express");
-
+const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
@@ -10,6 +12,10 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log("Listening on http://localhost:4000");
+const mongodb = mongoose.connection;
+
+mongodb.on("open", () => {
+  app.listen(4000, () => {
+    console.log("Listening on http://localhost:4000");
+  });
 });
