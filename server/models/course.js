@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 
 const CourseSchema = new Schema(
   {
-    // id: Id,
     name: String,
     type: String,
     location: String,
