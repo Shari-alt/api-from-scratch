@@ -49,6 +49,46 @@ app.delete("/students/:id", (req, res) => {
   });
 });
 
+app.post("/course", (req, res) => {
+  Course.create(req.body).then((newCourse) => {
+    res.status(201);
+    res.json(newCourse);
+  });
+});
+
+app.get("/course", (req, res) => {
+  Course.find().then((course) => {
+    res.status(200);
+    res.json(course);
+  });
+});
+
+app.get("/course/:id", (req, res) => {
+  const { id } = req.params;
+  Course.findById(id).then((courses) => {
+    res.status(200);
+    res.json(course);
+  });
+});
+
+app.patch("/course/:id", (req, res) => {
+  const { id } = req.params;
+  Course.findByIdAndUpdate(id, req.body, { new: true }).then(
+    (updatedCourse) => {
+      res.status(200);
+      res.json(updatedCourse);
+    }
+  );
+});
+
+app.delete("/course/:id", (req, res) => {
+  const { id } = req.params;
+  Course.findByIdAndDelete(id).then((course) => {
+    res.json("Course deleted!");
+    res.status(204);
+  });
+});
+
 // app.get("/students", (req, res) => {
 //   res.json({
 //     "/courses": "nothing yet",
