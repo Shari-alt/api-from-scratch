@@ -12,6 +12,11 @@ app.get("/", (req, res) => {
   });
 });
 
+mongoose.connect(`mongodb://localhost/bootcamp`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 const mongodb = mongoose.connection;
 
 mongodb.on("open", () => {
