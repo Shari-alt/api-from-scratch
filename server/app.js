@@ -5,7 +5,6 @@ const app = express();
 const cors = require("cors");
 const Students = require("./models/student");
 const Course = require("./models/course");
-const { restart } = require("nodemon");
 
 app.use(express.json());
 app.use(cors());
